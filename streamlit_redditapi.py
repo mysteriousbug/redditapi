@@ -1,5 +1,5 @@
 import streamlit as st
-# CSS for background
+# CSS code
 st.markdown(
     f"""
     <style>
