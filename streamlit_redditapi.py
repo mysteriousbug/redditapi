@@ -4,7 +4,7 @@ st.markdown(
     f"""
     <style>
         .reportview-container {{
-            background: url("your_image_url");  # You can also use an image as a background
+            background: url("https://github.com/mysteriousbug/redditapi/main/backgroundimg.png");  # You can also use an image as a background
         }}
     </style>
     """,
