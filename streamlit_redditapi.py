@@ -1,73 +1,44 @@
-#python code
-
 import tkinter as tk
 from tkinter import ttk
-import threading
-import requests
-from bs4 import BeautifulSoup
 
-class RedditScraperApp:
-    def __init__(self, root):
-        self.root = root
-        self.root.title("Reddit Scraper")
+def start_job():
+    # Function to simulate a job with progress
+    for i in range(101):
+        progress_var.set(i)  # Update the progress bar
+        root.update_idletasks()  # Update the GUI
+        # Simulate some work (you can replace this with your actual job)
+        import time
+        time.sleep(0.1)
 
-        # Create and pack labels, entry boxes, and button
-        self.product_label = ttk.Label(root, text="Product Paragraph:")
-        self.product_entry = ttk.Entry(root, width=50)
-        self.product_label.pack()
-        self.product_entry.pack()
+root = tk.Tk()
+root.title("Job Progress")
 
-        self.reddit_label = ttk.Label(root, text="SubReddit URL:")
-        self.reddit_entry = ttk.Entry(root, width=50)
-        self.reddit_label.pack()
-        self.reddit_entry.pack()
+frame = ttk.Frame(root, padding=10)
+frame.grid(column=0, row=0, sticky=(tk.W, tk.E, tk.N, tk.S))
 
-        self.progress_bar = ttk.Progressbar(root, length=300, mode='indeterminate')
-        self.progress_bar.pack()
+# Label for product paragraph
+product_label = ttk.Label(frame, text="Product Paragraph:")
+product_label.grid(column=0, row=0, sticky=tk.W)
 
-        self.result_label = ttk.Label(root, text="Comments Found:")
-        self.result_label.pack()
+# Text box for product paragraph
+product_textbox = tk.Text(frame, height=5, width=40)
+product_textbox.grid(column=0, row=1, columnspan=2, padx=5, pady=5, sticky=(tk.W, tk.E))
 
-        self.comment_list = tk.Listbox(root, width=80, height=15)
-        self.comment_list.pack()
+# Label for additional text box (optional)
+text_label = ttk.Label(frame, text="Additional Text:")
+text_label.grid(column=0, row=2, sticky=tk.W)
 
-        self.scrape_button = ttk.Button(root, text="Scrape Reddit", command=self.start_scraping)
-        self.scrape_button.pack()
+# Text box for additional input (optional)
+text_textbox = tk.Text(frame, height=3, width=40)
+text_textbox.grid(column=0, row=3, columnspan=2, padx=5, pady=5, sticky=(tk.W, tk.E))
 
-    def start_scraping(self):
-        product_paragraph = self.product_entry.get()
-        subreddit_url = self.reddit_entry.get()
+# Button to start the job
+start_button = ttk.Button(frame, text="Start Job", command=start_job)
+start_button.grid(column=0, row=4, columnspan=2, pady=10)
 
-        # Create a thread to perform web scraping
-        scraping_thread = threading.Thread(target=self.scrape_reddit, args=(product_paragraph, subreddit_url))
-        scraping_thread.start()
+# Progress bar
+progress_var = tk.IntVar()
+progress_bar = ttk.Progressbar(frame, length=300, variable=progress_var, mode="determinate")
+progress_bar.grid(column=0, row=5, columnspan=2, pady=10)
 
-    def scrape_reddit(self, product_paragraph, subreddit_url):
-        # Disable the button and start the progress bar
-        self.scrape_button["state"] = "disabled"
-        self.progress_bar.start()
-
-        try:
-            # Web scraping code here (use BeautifulSoup and requests)
-            # Replace the following code with your scraping logic
-            comments = ["Comment 1", "Comment 2", "Comment 3"]
-
-            # Display comments in the list
-            self.comment_list.delete(0, tk.END)
-            for comment in comments:
-                self.comment_list.insert(tk.END, comment)
-
-        except Exception as e:
-            # Handle any exceptions here
-            print(f"An error occurred: {str(e)}")
-
-        finally:
-            # Stop the progress bar and re-enable the button
-            self.progress_bar.stop()
-            self.scrape_button["state"] = "normal"
-
-if __name__ == "__main__":
-    root = tk.Tk()
-    app = RedditScraperApp(root)
-    root.mainloop()
-
+root.mainloop()
