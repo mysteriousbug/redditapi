@@ -1,44 +1,31 @@
-import tkinter as tk
-from tkinter import ttk
+import streamlit as st
 
-def start_job():
-    # Function to simulate a job with progress
-    for i in range(101):
-        progress_var.set(i)  # Update the progress bar
-        root.update_idletasks()  # Update the GUI
-        # Simulate some work (you can replace this with your actual job)
-        import time
-        time.sleep(0.1)
-
-root = tk.Tk()
-root.title("Job Progress")
-
-frame = ttk.Frame(root, padding=10)
-frame.grid(column=0, row=0, sticky=(tk.W, tk.E, tk.N, tk.S))
-
-# Label for product paragraph
-product_label = ttk.Label(frame, text="Product Paragraph:")
-product_label.grid(column=0, row=0, sticky=tk.W)
+# Title
+st.title("Product Explanation Form")
 
 # Text box for product paragraph
-product_textbox = tk.Text(frame, height=5, width=40)
-product_textbox.grid(column=0, row=1, columnspan=2, padx=5, pady=5, sticky=(tk.W, tk.E))
+product_paragraph = st.text_area("Product Paragraph")
 
-# Label for additional text box (optional)
-text_label = ttk.Label(frame, text="Additional Text:")
-text_label.grid(column=0, row=2, sticky=tk.W)
+# Text box
+additional_text = st.text_area("Additional Text (Optional)")
 
-# Text box for additional input (optional)
-text_textbox = tk.Text(frame, height=3, width=40)
-text_textbox.grid(column=0, row=3, columnspan=2, padx=5, pady=5, sticky=(tk.W, tk.E))
+# Button
+if st.button("Start Job"):
+    # You can place your job logic here
+    st.text("Job Started...")
 
-# Button to start the job
-start_button = ttk.Button(frame, text="Start Job", command=start_job)
-start_button.grid(column=0, row=4, columnspan=2, pady=10)
+    # Simulate a job with progress
+    import time
+    progress_bar = st.progress(0)
+    for i in range(101):
+        time.sleep(0.1)
+        progress_bar.progress(i)
 
-# Progress bar
-progress_var = tk.IntVar()
-progress_bar = ttk.Progressbar(frame, length=300, variable=progress_var, mode="determinate")
-progress_bar.grid(column=0, row=5, columnspan=2, pady=10)
+    st.text("Job Completed!")
 
-root.mainloop()
+# This will display any comments or outputs from your job
+st.text("Comments:")
+
+# Display comments here (replace with your actual comments)
+st.text("Comment 1")
+st.text("Comment 2")
