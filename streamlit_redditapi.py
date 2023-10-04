@@ -1,5 +1,5 @@
 import streamlit as st
-# Inject custom CSS with animation
+# CSS for background
 st.markdown(
     f"""
     <style>
@@ -23,16 +23,16 @@ st.markdown(
 # Title
 st.title("Reddit API")
 
-# Text box for product paragraph
+# Text box for product description
 product_paragraph = st.text_area("Product Description", key="product_desc")
 
-# Text box
+# Text box for subreddit url
 additional_text = st.text_area("Subreddit URL", key="subreddit_url", height=50)
 
 # Button
 if st.button("Run Code"):
-    # You can place your job logic here
-    st.text("Job Started...")
+    
+    st.text("Fetching Comments...")
 
     # Simulate a job with progress
     import time
@@ -41,7 +41,7 @@ if st.button("Run Code"):
         time.sleep(0.1)
         progress_bar.progress(i)
 
-    st.text("Job Completed!")
+    st.text("Results Ready!")
 
     # This will display any comments or outputs from your job
     st.text("Comments:")
