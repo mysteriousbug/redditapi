@@ -4,7 +4,7 @@ st.markdown(
     f"""
     <style>
         .reportview-container {{
-            background: url("https://github.com/mysteriousbug/redditapi/main/backgroundimg.png");  # You can also use an image as a background
+            background: url("https://github.com/mysteriousbug/redditapi/blob/main/backgroundimg.png");  # You can also use an image as a background
         }}
     </style>
     """,
@@ -14,13 +14,13 @@ st.markdown(
 st.title("Reddit API")
 
 # Text box for product paragraph
-product_paragraph = st.text_area("Product Paragraph")
+product_paragraph = st.text_area("Subreddit URL")
 
 # Text box
 additional_text = st.text_area("Additional Text (Optional)")
 
 # Button
-if st.button("Start Job"):
+if st.button("Run Code"):
     # You can place your job logic here
     st.text("Job Started...")
 
