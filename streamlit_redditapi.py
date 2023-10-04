@@ -3,12 +3,29 @@ import streamlit as st
 st.markdown(
     f"""
     <style>
-        .reportview-container {{
-            background: url("https://github.com/mysteriousbug/redditapi/blob/main/backgroundimg.png");  # You can also use an image as a background
+        @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+        body {{
+            font-family: 'Roboto', sans-serif;
+            animation: pulse 5s infinite;
+            background-size: 100% 100%;
+            background-image: url('https://raw.githubusercontent.com/mysteriousbug/redditapi/master/backgroundimg.png');  # Replace with your GitHub raw image URL
+            background-repeat: no-repeat;
+        }}
+        @keyframes pulse {{
+            0% {{
+                opacity: 0.7;
+            }}
+            50% {{
+                opacity: 0.5;
+            }}
+            100% {{
+                opacity: 0.7;
+            }}
         }}
     </style>
     """,
     unsafe_allow_html=True,
+
 )
 # Title
 st.title("Reddit API")
