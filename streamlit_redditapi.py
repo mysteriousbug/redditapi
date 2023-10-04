@@ -43,9 +43,9 @@ if st.button("Run Code"):
 
     st.text("Job Completed!")
 
-# This will display any comments or outputs from your job
-st.text("Comments:")
+    # This will display any comments or outputs from your job
+    st.text("Comments:")
 
-# Display comments here (replace with your actual comments)
-st.text("Comment 1")
-st.text("Comment 2")
+    # Display comments here (replace with your actual comments)
+    st.text("Comment 1")
+    st.text("Comment 2")
