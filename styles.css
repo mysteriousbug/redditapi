@@ -1,0 +1,18 @@
+body {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        background-color: #e6f7ff; /* Initial background color */
+        transform: scale(1);
+    }
+    50% {
+        background-color: #ffcccb; /* Intermediate background color */
+        transform: scale(1.05);
+    }
+    100% {
+        background-color: #e6f7ff; /* Final background color */
+        transform: scale(1);
+    }
+}
