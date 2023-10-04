@@ -11,17 +11,7 @@ st.markdown(
             background-image: url('https://raw.githubusercontent.com/mysteriousbug/redditapi/master/backgroundimg.png');  # Replace with your GitHub raw image URL
             background-repeat: no-repeat;
         }}
-        @keyframes pulse {{
-            0% {{
-                opacity: 0.7;
-            }}
-            50% {{
-                opacity: 0.5;
-            }}
-            100% {{
-                opacity: 0.7;
-            }}
-        }}
+        
     </style>
     """,
     unsafe_allow_html=True,
