@@ -8,7 +8,7 @@ st.markdown(
             font-family: 'Roboto', sans-serif;
             animation: pulse 5s infinite;
             background-size: 100% 100%;
-            background-image: url('https://raw.githubusercontent.com/mysteriousbug/redditapi/master/backgroundimg.png');  # Replace with your GitHub raw image URL
+            background-image: url('backgroundimg.png');  # Replace with your GitHub raw image URL
             background-repeat: no-repeat;
         }}
         
@@ -21,10 +21,10 @@ st.markdown(
 st.title("Reddit API")
 
 # Text box for product paragraph
-product_paragraph = st.text_area("Subreddit URL")
+product_paragraph = st.text_area("Product Description")
 
 # Text box
-additional_text = st.text_area("Additional Text (Optional)")
+additional_text = st.text_area("Subreddit URL")
 
 # Button
 if st.button("Run Code"):
