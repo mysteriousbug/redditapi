@@ -27,7 +27,7 @@ st.title("Reddit API")
 product_paragraph = st.text_area("Product Description", key="product_desc")
 
 # Text box
-additional_text = st.text_area("Subreddit URL", key="subreddit_url", class_="custom-text-box")
+additional_text = st.text_area("Subreddit URL", key="subreddit_url", height="100")
 
 # Button
 if st.button("Run Code"):
