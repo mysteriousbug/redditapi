@@ -11,6 +11,9 @@ st.markdown(
             background-image: url('backgroundimg.png');  # Replace with your GitHub raw image URL
             background-repeat: no-repeat;
         }}
+        .custom-text-box {{
+            height: 100px; /* Adjust the height as needed */
+        }}
         
     </style>
     """,
@@ -21,10 +24,10 @@ st.markdown(
 st.title("Reddit API")
 
 # Text box for product paragraph
-product_paragraph = st.text_area("Product Description")
+product_paragraph = st.text_area("Product Description", key="product_desc")
 
 # Text box
-additional_text = st.text_area("Subreddit URL")
+additional_text = st.text_area("Subreddit URL", key="subreddit_url", class_="custom-text-box")
 
 # Button
 if st.button("Run Code"):
