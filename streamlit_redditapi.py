@@ -29,7 +29,18 @@ def load_lottieurl(url: str):
         return None
     return r.json()
 
-lottie_hello = load_lottieurl("https://assets9.lottiefiles.com/packages/lf20_M9p23l.json")
+lottie_hello = load_lottieurl("https://lottie.host/?file=e5669da7-f681-418f-b8e0-021a8e890a13/H8jy4AG3jX.json")
+st_lottie(
+    lottie_hello,
+    speed=1,
+    reverse=False,
+    loop=True,
+    quality="low", # medium ; high
+    renderer="svg", # canvas
+    height=None,
+    width=None,
+    key=None,
+)
 # Title
 st.title("Reddit API")
 
