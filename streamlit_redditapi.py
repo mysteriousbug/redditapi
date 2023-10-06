@@ -1,7 +1,7 @@
 import streamlit as st
 import json
 import requests  # pip install requests
-from streamlit_lottie import st_lottie  # pip install streamlit-lottie
+from streamlit-lottie import st_lottie  # pip install streamlit-lottie
 # CSS code
 st.markdown(
     f"""
