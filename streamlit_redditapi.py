@@ -58,9 +58,4 @@ if st.button("Run Code"):
 
     for comment_info in comments_data:
         post_title, comment, url = comment_info
-        with st.container():
-            st.markdown("<div class='output-box'>", unsafe_allow_html=True)
-            st.write(f"**Post Title:** {post_title}")
-            st.write(f"**Comment:** {comment}")
-            st.write(f"**URL:** {url}")
-            st.markdown("</div>", unsafe_allow_html=True)
+        st.markdown(f"<div class='output-box'>{post_title}<br>{comment}<br>{url}</div>", unsafe_allow_html=True)
