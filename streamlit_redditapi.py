@@ -1,7 +1,7 @@
 import streamlit as st
 import json
 import requests  # pip install requests
-from streamlit_lottie import st_lottie  # pip install streamlit-lottie
+
 # CSS code
 st.markdown(
     f"""
@@ -23,24 +23,7 @@ st.markdown(
     unsafe_allow_html=True,
 
 )
-def load_lottieurl(url: str):
-    r = requests.get(url)
-    if r.status_code != 200:
-        return None
-    return r.json()
 
-lottie_hello = load_lottieurl("https://lottie.host/?file=e5669da7-f681-418f-b8e0-021a8e890a13/H8jy4AG3jX.json")
-st_lottie(
-    lottie_hello,
-    speed=1,
-    reverse=False,
-    loop=True,
-    quality="low", # medium ; high
-    renderer="svg", # canvas
-    height=None,
-    width=None,
-    key=None,
-)
 # Title
 st.title("Reddit API")
 
