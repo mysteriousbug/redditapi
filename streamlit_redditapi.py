@@ -21,17 +21,19 @@ st.markdown(
     </style>
     """,
     unsafe_allow_html=True,
-
 )
 
 # Title
 st.title("Reddit API")
 
 # Text box for product description
-product_paragraph = st.text_area("Product Description", key="product_desc")
+product_description = st.text_area("Product Description", key="product_desc")
 
-# Text box for subreddit url
-additional_text = st.text_area("Subreddit URL", key="subreddit_url", height=50)
+# Text box for subreddit URL(s)
+subreddit_urls = st.text_area("Subreddit URL(s)", key="subreddit_urls", height=100)
+
+# Integer input for the number of posts to scrape per subreddit
+num_posts_to_scrape = st.number_input("Number of Posts to Scrape per Subreddit", min_value=1, step=1, key="num_posts")
 
 # Button
 if st.button("Run Code"):
@@ -50,6 +52,6 @@ if st.button("Run Code"):
     # This will display any comments or outputs from your job
     st.text("Comments:")
 
-    # Display comments here (replace with your actual comments)
-    st.text("Comment 1")
-    st.text("Comment 2")
+    # Display comments inside boxes
+    for comment in ["Comment 1", "Comment 2"]:
+        st.text(comment)
