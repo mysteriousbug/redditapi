@@ -1,6 +1,6 @@
 import streamlit as st
 import json
-import requests  # pip install requests
+import requests  
 
 # CSS code
 st.markdown(
@@ -50,11 +50,6 @@ if st.button("Run Code"):
         progress_bar.progress(i)
 
     st.text("Results Ready!")
-
-    comments_data = [
-        ["Post Title 1", "Comment 1", "URL 1"],
-        ["Post Title 2", "Comment 2", "URL 2"]
-    ]
 
     for i in range(3):
         st.markdown(f"<div class='output-box'>Post Titile: <br>Comment: <br>URL: </div>", unsafe_allow_html=True)
