@@ -14,6 +14,11 @@ st.markdown(
         .custom-text-box {{
             height: 100px; /* Adjust the height as needed */
         }}
+        .output-box {{
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+        }}
         
     </style>
     """,
@@ -53,6 +58,9 @@ if st.button("Run Code"):
 
     for comment_info in comments_data:
         post_title, comment, url = comment_info
-        st.write(f"**Post Title:** {post_title}")
-        st.write(f"**Comment:** {comment}")
-        st.write(f"**URL:** {url}")
+        with st.container():
+            st.markdown("<div class='output-box'>", unsafe_allow_html=True)
+            st.write(f"**Post Title:** {post_title}")
+            st.write(f"**Comment:** {comment}")
+            st.write(f"**URL:** {url}")
+            st.markdown("</div>", unsafe_allow_html=True)
