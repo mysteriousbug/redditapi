@@ -41,12 +41,12 @@ if st.button("Run Code"):
     import time
     progress_bar = st.progress(0)
     for i in range(101):
-        time.sleep(0.5)
+        time.sleep(1)
         progress_bar.progress(i)
 
     st.text("Results Ready!")
 
-    omments_data = [
+    comments_data = [
         ["Post Title 1", "Comment 1", "URL 1"],
         ["Post Title 2", "Comment 2", "URL 2"]
     ]
