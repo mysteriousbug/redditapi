@@ -46,7 +46,7 @@ if st.button("Run Code"):
     import time
     progress_bar = st.progress(0)
     for i in range(101):
-        time.sleep(0.1)
+        time.sleep(0.01)
         progress_bar.progress(i)
 
     st.text("Results Ready!")
