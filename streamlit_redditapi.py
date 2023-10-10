@@ -79,9 +79,9 @@ if st.button("Run Code"):
     st.text("Results Ready!")
 
     for comment_key, comment_data in data.items():
-    comment_text = comment_data.get("comment_text", "N/A")
-    post = comment_data.get("post", "N/A")
-    url = comment_data.get("url", "N/A")
+        comment_text = comment_data.get("comment_text", "N/A")
+        post = comment_data.get("post", "N/A")
+        url = comment_data.get("url", "N/A")
 
-    # Display values in the HTML div
-    st.markdown(f"<div class='output-box'>Comment: {comment_text} <br>Post: {post} <br>URL: {url}</div>", unsafe_allow_html=True)
+        # Display values in the HTML div
+        st.markdown(f"<div class='output-box'>Comment: {comment_text} <br>Post: {post} <br>URL: {url}</div>", unsafe_allow_html=True)
