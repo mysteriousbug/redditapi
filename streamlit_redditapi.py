@@ -1,6 +1,9 @@
 import streamlit as st
+from tqdm import tqdm
 import json
 import requests  
+import threading
+from main import update_data
 
 # CSS code
 st.markdown(
@@ -11,13 +14,12 @@ st.markdown(
             font-family: 'Roboto', sans-serif;
             animation: pulse 5s infinite;
         }}
-        .custom-text-box {{
-            height: 100px; /* Adjust the height as needed */
-        }}
         .output-box {{
             border: 1px solid #ddd;
             padding: 10px;
             margin-bottom: 10px;
+            font-family: 'Roboto', sans-serif;
+            animation: pulse 5s infinite;
         }}
         
     </style>
@@ -25,24 +27,13 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-data = {
-    "comment1": {
-        "comment_text": "This is the first comment",
-        "post": "Post 1",
-        "url": "URL 1"
-    },
-    "comment2": {
-        "comment_text": "This is the second comment",
-        "post": "Post 2",
-        "url": "URL 2"
-    },
-    "comment3": {
-        "comment_text": "This is the third comment",
-        "post": "Post 3",
-        "url": "URL 3"
-    }
-}
+def update_data_with_progress(product_description, ignore_subreddits, time_cutoff_seconds, subreddits, postlimit):
+    with st.empty():
+        progress_bar = st.progress(0)
 
+        # Call the update_data function and monitor progress with tqdm
+        for progress in tqdm(update_data(product_description, ignore_subreddits, time_cutoff_seconds, subreddits, postlimit), unit="item"):
+            progress_bar.progress(progress)
 
 # Title
 st.title("Reddit API")
@@ -62,25 +53,13 @@ num_posts_to_scrape = st.number_input("Number of Posts to Scrape per Subreddit",
 # Integer/Float input the epoch time, in seconds
 time_cutoff_seconds = st.number_input("Epoch Time (in seconds)", min_value=0.0, key="time_cutoff_seconds")
 
-# Button
-if st.button("Run Code"):
-    
-    st.text("Fetching Comments...")
+if st.button("Update Data"):
+    update_data_with_progress(product_description, ignore_subreddits, time_cutoff_seconds, subreddits, postlimit)
 
-    # Simulate a job with progress
-    import time
-    progress_bar = st.progress(0)
-    for i in range(101):
-        time.sleep(0.01)
-        progress_bar.progress(i)
+for comment_key, comment_data in data.items():
+    comment_text = comment_data.get("COMMENT", "N/A")
+    post = comment_data.get("POST", "N/A")
+    url = comment_data.get("URL", "N/A")
 
-
-    st.text("Results Ready!")
-
-    for comment_key, comment_data in data.items():
-        comment_text = comment_data.get("comment_text", "N/A")
-        post = comment_data.get("post", "N/A")
-        url = comment_data.get("url", "N/A")
-
-        # Display values in the HTML div
-        st.markdown(f"<div class='output-box'>Comment: {comment_text} <br>Post: {post} <br>URL: {url}</div>", unsafe_allow_html=True)
+    # Display values in the HTML div
+    st.markdown(f"<div class='output-box'>COMMENT: {comment_text} <br>POST: {post} <br>URL: {url}</div>", unsafe_allow_html=True)
