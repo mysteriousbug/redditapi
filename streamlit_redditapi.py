@@ -74,7 +74,6 @@ if st.button("Run Code"):
         time.sleep(0.01)
         progress_bar.progress(i)
 
-    d = momo()
 
     st.text("Results Ready!")
 
