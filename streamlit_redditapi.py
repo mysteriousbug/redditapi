@@ -25,6 +25,13 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
+json_input = '{"comment": "it is a cool device to have", "post": "why should everyone have a trimmer?", "url": "https://www.hubspot.com"}'
+
+def momo():
+    data = json.loads(json_input)
+    return data
+
+
 # Title
 st.title("Reddit API")
 
@@ -54,6 +61,8 @@ if st.button("Run Code"):
     for i in range(101):
         time.sleep(0.01)
         progress_bar.progress(i)
+
+    d = momo()
 
     st.text("Results Ready!")
 
