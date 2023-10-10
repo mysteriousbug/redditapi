@@ -35,13 +35,13 @@ product_description = st.text_area("Product Description", key="product_desc")
 subreddit_urls = st.text_area("Subreddit URL(s)", key="subreddit_urls")
 
 # Text box for subreddit(s) to ignore
-ignore_subreddits = st.text_area("Subreddit(s) to Ignore", key="ignore_subreddits")
+ignore_subreddits = st.text_area("Subreddit(s) to ignore", key="ignore_subreddits")
 
 # Integer input for the number of posts to scrape per subreddit
 num_posts_to_scrape = st.number_input("Number of Posts to Scrape per Subreddit", min_value=1, step=1, key="num_posts")
 
 # Integer/Float input the epoch time, in seconds
-time_cutoff_seconds = st.number_input("Epoch Time in seconds", min_value=0, key="time_cutoff_seconds")
+time_cutoff_seconds = st.number_input("Epoch Time in seconds", min_value=0.0, key="time_cutoff_seconds")
 
 # Button
 if st.button("Run Code"):
