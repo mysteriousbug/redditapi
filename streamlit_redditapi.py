@@ -25,11 +25,23 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-json_input = '{"comment": "it is a cool device to have", "post": "why should everyone have a trimmer?", "url": "https://www.hubspot.com"}'
-
-def momo():
-    data = json.loads(json_input)
-    return data
+data = {
+    "comment1": {
+        "comment_text": "This is the first comment",
+        "post": "Post 1",
+        "url": "URL 1"
+    },
+    "comment2": {
+        "comment_text": "This is the second comment",
+        "post": "Post 2",
+        "url": "URL 2"
+    },
+    "comment3": {
+        "comment_text": "This is the third comment",
+        "post": "Post 3",
+        "url": "URL 3"
+    }
+}
 
 
 # Title
@@ -66,5 +78,10 @@ if st.button("Run Code"):
 
     st.text("Results Ready!")
 
-    for i in range(3):
-        st.markdown(f"<div class='output-box'>Comment: d[comment] <br>Post:d[post] <br>URL:d[url] </div>", unsafe_allow_html=True)
+    for comment_key, comment_data in data.items():
+    comment_text = comment_data.get("comment_text", "N/A")
+    post = comment_data.get("post", "N/A")
+    url = comment_data.get("url", "N/A")
+
+    # Display values in the HTML div
+    st.markdown(f"<div class='output-box'>Comment: {comment_text} <br>Post: {post} <br>URL: {url}</div>", unsafe_allow_html=True)
