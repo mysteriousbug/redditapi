@@ -32,8 +32,14 @@ def update_data_with_progress(product_description, ignore_subreddits, time_cutof
         progress_bar = st.progress(0)
 
         # Call the update_data function and monitor progress with tqdm
+        data = None  # Initialize data as None
         for progress in tqdm(update_data(product_description, ignore_subreddits, time_cutoff_seconds, subreddits, postlimit), unit="item"):
             progress_bar.progress(progress)
+        
+        # Store the JSON data returned by the update_data function
+        data = update_data(product_description, ignore_subreddits, time_cutoff_seconds, subreddits, postlimit)
+
+    return data  # Return the JSON data
 
 # Title
 st.title("Reddit API")
@@ -54,7 +60,7 @@ num_posts_to_scrape = st.number_input("Number of Posts to Scrape per Subreddit",
 time_cutoff_seconds = st.number_input("Epoch Time (in seconds)", min_value=0.0, key="time_cutoff_seconds")
 
 if st.button("Update Data"):
-    update_data_with_progress(product_description, ignore_subreddits, time_cutoff_seconds, subreddits, postlimit)
+    data = update_data_with_progress(product_description, ignore_subreddits, time_cutoff_seconds, subreddits, postlimit)
 
 for comment_key, comment_data in data.items():
     comment_text = comment_data.get("COMMENT", "N/A")
